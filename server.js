@@ -7,7 +7,7 @@ app.use(express.static('public'));
 app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
 
 app.get('/', (req, res) => {
-    res.redirect('/about');
+    res.send('Hello World');
 });
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/about.html'));
