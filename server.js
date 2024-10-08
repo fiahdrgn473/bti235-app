@@ -25,8 +25,12 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/about.html'));
   });
 
-app.get('/*', (req, res) => {
+app.get('/Error404', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'DK Error 404.jpg'))
+});
+
+app.get('/*', (req, res) => {
+    res.redirect('/Error404');
 });
 
 app.listen(HTTP_PORT, () => {
