@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/about.html'));
+    res.sendFile(path.join(__dirname, './views/about.html'));
 });
 
 // start the server on the port and output a confirmation to the console
