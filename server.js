@@ -1,15 +1,17 @@
-const express = require('express'); // "require" the Express module
-const app = express(); // obtain the "app" object
-const HTTP_PORT = process.env.PORT || 8080; // assign a port
-app.use(express.static('public')); 
+const express = require('express');
+const app = express();
+const path = require('path');
 
+const HTTP_PORT = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
-});
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, './views/about.html'));
+  res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
 });
 
-// start the server on the port and output a confirmation to the console
-app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/about.html'));
+});
+
+app.listen(HTTP_PORT, () => {
+  console.log(`server listening on: ${HTTP_PORT}`);
+});
