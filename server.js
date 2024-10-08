@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const blog = require('blog-service.js')
+//const blog = require('blog-service.js')
 
 const HTTP_PORT = process.env.PORT || 8080;
 
@@ -26,7 +26,7 @@ app.get('/about', (req, res) => {
   });
 
 app.get('/*', (req, res) => {
-    //res.status(404).sendFile('https://i.kym-cdn.com/entries/icons/mobile/000/025/930/unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg')
+    res.status(404).sendFile('https://i.kym-cdn.com/entries/icons/mobile/000/025/930/unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg')
     res.send('Error 404, page not found');
 });
 
