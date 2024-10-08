@@ -26,7 +26,7 @@ app.get('/about', (req, res) => {
   });
 
 app.get('/*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'DK Error 404.pdf'))
+    res.status(404).sendFile(path.join(__dirname, 'DK Error 404.jpg'))
 });
 
 app.listen(HTTP_PORT, () => {
