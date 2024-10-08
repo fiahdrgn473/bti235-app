@@ -26,8 +26,8 @@ app.get('/about', (req, res) => {
   });
 
 app.get('/*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg'))
     res.send('Error 404, page not found');
+    res.status(404).sendFile(path.join(__dirname, 'unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg'))
 });
 
 app.listen(HTTP_PORT, () => {
