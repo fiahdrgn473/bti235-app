@@ -5,7 +5,7 @@ const path = require('path');
 const HTTP_PORT = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-  res.send("Hello World<br /><a href='/about'>Go to the about page</a>");
+  res.redirect('/about');
 });
 
 app.get('/about', (req, res) => {
