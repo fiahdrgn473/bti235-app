@@ -26,7 +26,7 @@ app.get('/about', (req, res) => {
   });
 
 app.get('/*', (req, res) => {
-    res.status(404).sendFile('https://i.kym-cdn.com/entries/icons/mobile/000/025/930/unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg')
+    res.status(404).sendFile(path.join(__dirname, 'unknown_(2)(Photo)(noise_scale)(Level3)(width_800)(16bit).jpg'))
     res.send('Error 404, page not found');
 });
 
