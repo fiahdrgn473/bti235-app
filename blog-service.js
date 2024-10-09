@@ -43,7 +43,7 @@ function getPublishedPosts(){
         if (posts.length == 0) {
             return reject('no results returned');
         }
-        resolve(posts);
+        resolve(publishedPosts);
     }); 
 }
 function getCategories(){
