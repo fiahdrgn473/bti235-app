@@ -15,7 +15,7 @@ function initialize() {
             } catch (parseErr) {
                 return reject('unable to parse posts');
             }
-            fs.readFile(path.join(__dirname, './data/posts.json'), 'utf8', (err, data) => {
+            fs.readFile(path.join(__dirname, './data/categories.json'), 'utf8', (err, data) => {
                 if (err) {
                     return reject('unable to read file categories')
                 }
