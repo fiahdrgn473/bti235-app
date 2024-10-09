@@ -6,7 +6,7 @@ let posts = [];
 function initialize() {
     return new Promise((resolve, reject) => {
 
-        fs.readFile(path.join(__dirname, '/data/posts.json'), 'utf8', (err, data) => {
+        fs.readFile(path.join(__dirname, './data/posts.json'), 'utf8', (err, data) => {
             if (err) {
                 return reject('unable to read file posts')
             }
@@ -15,7 +15,7 @@ function initialize() {
             } catch (parseErr) {
                 return reject('unable to parse posts');
             }
-            fs.readFile(path.join(__dirname, '/data/categories.json'), 'utf8', (err, data) => {
+            fs.readFile(path.join(__dirname, './data/categories.json'), 'utf8', (err, data) => {
                 if (err) {
                     return reject('unable to read file categories')
                 }
@@ -48,7 +48,7 @@ function getPublishedPosts(){
 }
 function getCategories(){
     return new Promise((resolve, reject) => {
-        if (posts.length == 0) {
+        if (categories.length == 0) {
         reject('unable to read file');
         }
         resolve(categories);

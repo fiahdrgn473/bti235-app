@@ -33,7 +33,7 @@ app.get('/blog', (req, res) => {
 });
 
 app.get('/categories', (req, res) => {
-  blogservice.getPublishedPosts()
+  blogservice.getCategories()
   .then(data=> res.json(data))
   .catch(err => res.status(404).json({ message: err }));
 });
