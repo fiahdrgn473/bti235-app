@@ -8,21 +8,21 @@ function initialize() {
 
         fs.readFile(path.join(__dirname, '/data/posts.json'), 'utf8', (err, data) => {
             if (err) {
-                return reject('unable to read file')
+                return reject('unable to read file posts')
             }
             try {
                 posts = JSON.parse(data);
             } catch (parseErr) {
-                return reject('unable to read file');
+                return reject('unable to parse posts');
             }
             fs.readFile(path.join(__dirname, '/data/categories.json'), 'utf8', (err, data) => {
                 if (err) {
-                    return reject('unable to read file')
+                    return reject('unable to read file categories')
                 }
                 try {
                     categories = JSON.parse(data);
                 } catch (parseErr) {
-                    return reject('unable to read file');
+                    return reject('unable to parse categories');
                 }
                 resolve();
             });
