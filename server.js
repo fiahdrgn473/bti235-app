@@ -4,7 +4,7 @@
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: ______________________ Student ID: ______________ Date: ________________
+* Name: Mark McCarthy Student ID: 108516220 Date: 2024/10/09
 *
 * Online (Vercel) Link: ________________________________________________________
 *
