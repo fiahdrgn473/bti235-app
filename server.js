@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const blogservice = require('/blog-service.js');
+const blogservice = require(path.join(__dirname, '/blog-service.js'));
 //const blog = require('blog-service.js')
 
 const HTTP_PORT = process.env.PORT || 8080;
