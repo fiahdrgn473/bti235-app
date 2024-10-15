@@ -6,7 +6,7 @@
 *
 * Name: Mark McCarthy Student ID: 108516220 Date: 2024/10/09
 *
-* Online (Vercel) Link: ________________________________________________________
+* Online (Vercel) Link: https://bti235assignment2.vercel.app/about
 *
 ********************************************************************************/
 const express = require('express');
@@ -39,8 +39,11 @@ app.get('/categories', (req, res) => {
 });
   
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/about.html'));
-  });
+  res.sendFile(path.join(__dirname, '/views/about.html'));
+});
+app.get('/posts/add', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/addPost.html'));
+})
 
 app.get('/Error404', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'DK Error 404.jpg'))
