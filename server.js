@@ -12,7 +12,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const multer = require("multer");
+const cloudinary = require('cloudinary').v2;
+const streamifier = require('streamifier');
+const upload = multer(); 
 const blogservice = require(path.join(__dirname, '/blog-service.js'));
+
 
 const HTTP_PORT = process.env.PORT || 8080;
 
