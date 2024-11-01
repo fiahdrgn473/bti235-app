@@ -67,10 +67,23 @@ function getCategories(){
         resolve(categories);
     });
 }
-
+function addPost(postData){
+    return new Promise((resolve, reject) => {
+        if (typeof(postData.published) == "undefined") {
+            postData.published = false;
+        }
+        else {
+            postData.published = true;
+        }
+        postData.id = posts.length + 1;
+        posts.push(postData);
+        resolve(postData);
+    });
+}
 module.exports = {
     initialize, 
     getAllPosts, 
     getPublishedPosts, 
-    getCategories
+    getCategories,
+    addPost
 }
