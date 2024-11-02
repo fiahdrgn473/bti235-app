@@ -25,8 +25,6 @@ cloudinary.config({
 const upload = multer(); 
 const blogservice = require(path.join(__dirname, '/blog-service.js'));
 
-
-
 const HTTP_PORT = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
@@ -34,9 +32,30 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  blogservice.getAllPosts()
-  .then(data=> res.json(data))
-  .catch(err => res.status(404).json({ message: err }));
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+// https://example.com/path/to/page?color=purple&size=M&size=L
+
+  if(typeof(urlParams.get('category')) != "undefined"){
+    blogservice.getPostsByCategory(urlParams.get('category'))
+    .then(data=> res.json(data))
+    .catch(err => res.status(404).json({ message: err }));
+  }
+  else if (typeof(urlParams.get('minDate')) != "undefined"){
+    blogservice.getPostsByMinDate(urlParams.get('minDate'))
+    .then(data=> res.json(data))
+    .catch(err => res.status(404).json({ message: err }));
+  }    
+  else {
+    blogservice.getAllPosts()
+    .then(data=> res.json(data))
+    .catch(err => res.status(404).json({ message: err }));
+  }
+});
+
+app.get('/posts/:value', (req, res) => {
+  blogservice.getPostByID(value)
 });
 
 app.get('/blog', (req, res) => {
@@ -59,8 +78,7 @@ app.get('/posts/add', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/addPost.html'));
 })
 
-app.post('/posts/add', (req, res) => {
-  upload.single("featureImage");
+app.post('/posts/add', upload.single("featureImage"), function (req, res, next) {
   let streamUpload = (req) => {
     return new Promise((resolve, reject) => {
       let stream = cloudinary.uploader.upload_stream((error, result) => {
@@ -80,7 +98,8 @@ app.post('/posts/add', (req, res) => {
   }
   upload(req).then((uploaded)=>{
     req.body.featureImage = uploaded.url;
-    addPost(req.body);
+    blogservice.addPost(req.body);
+
     res.redirect('/posts');
     });
 });

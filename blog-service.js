@@ -53,11 +53,38 @@ function getAllPosts(){
 function getPublishedPosts(){
     return new Promise((resolve, reject) => {
         const publishedPosts = posts.filter(post => post.published);
-        if (posts.length == 0) {
+        if (publishedPosts.length == 0) {
             return reject('no results returned');
         }
         resolve(publishedPosts);
     }); 
+}
+function getPostsByCategory(Category){
+    return new Promise((resolve, reject) => {
+        const postsInCategory = posts.filter(post => post.category == Category);
+        if (postsInCategory.length == 0) {
+            return reject('no results returned');
+        }
+        resolve(postsInCategory);
+    }); 
+}
+function getPostsByMinDate(minDateStr){
+    return new Promise((resolve, reject) => {
+        const postsAfterDate = posts.filter(post => new Date(post.postDate) >= new Date(minDateStr));
+        if (postsAfterDate.length == 0) {
+            return reject('no results returned');
+        }
+        resolve(postsAfterDate);
+    });
+}
+function getPostById(id){
+    return new Promise((resolve, reject) => {
+        const searchedPost = posts.filter(post => post.id >= id);
+        if (searchedPost.length == 0) {
+            return reject('no result returned');
+        }
+        resolve(searchedPost);
+    });
 }
 function getCategories(){
     return new Promise((resolve, reject) => {
@@ -85,5 +112,8 @@ module.exports = {
     getAllPosts, 
     getPublishedPosts, 
     getCategories,
-    addPost
+    addPost,
+    getPostsByCategory,
+    getPostsByMinDate,
+    getPostById
 }
