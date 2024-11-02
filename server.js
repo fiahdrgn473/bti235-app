@@ -54,10 +54,6 @@ app.get('/posts', (req, res) => {
   }
 });
 
-app.get('/posts/:value', (req, res) => {
-  blogservice.getPostByID(value)
-});
-
 app.get('/blog', (req, res) => {
   blogservice.getPublishedPosts()
   .then(data=> res.json(data))
@@ -91,6 +87,11 @@ app.post('/posts/add', upload.single("featureImage"), function (req, res, next) 
       streamifier.createReadStream(req.file.buffer).pipe(stream);
     });
   };
+
+  app.get('/posts/:value', (req, res) => {
+    blogservice.getPostByID(req.params.value)
+  });
+
   async function upload(req) {
     let result = await streamUpload(req);
     console.log(result);
