@@ -1,5 +1,5 @@
 /*********************************************************************************
-* BTI325 – Assignment 02
+* BTI325 – Assignment 03
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
@@ -37,12 +37,12 @@ app.get('/posts', (req, res) => {
 
 // https://example.com/path/to/page?color=purple&size=M&size=L
 
-  if(typeof(urlParams.get('category')) != "undefined"){
+  if(urlParams.has('category')){
     blogservice.getPostsByCategory(urlParams.get('category'))
     .then(data=> res.json(data))
     .catch(err => res.status(404).json({ message: err }));
   }
-  else if (typeof(urlParams.get('minDate')) != "undefined"){
+  else if (urlParams.has('minDate')){
     blogservice.getPostsByMinDate(urlParams.get('minDate'))
     .then(data=> res.json(data))
     .catch(err => res.status(404).json({ message: err }));
