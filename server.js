@@ -32,8 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  const urlParams = new URLSearchParams(location.search);
 
 // https://example.com/path/to/page?color=purple&size=M&size=L
 
