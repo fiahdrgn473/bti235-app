@@ -15,6 +15,7 @@ const path = require('path');
 const multer = require("multer");
 const cloudinary = require('cloudinary').v2;
 const streamifier = require('streamifier');
+const exphbs = require('express-handlebars');
 
 cloudinary.config({
   cloud_name: 'dvzmk0y1j',
@@ -32,14 +33,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  try {
-    console.log(window.location.search)
-    const urlParams = new URLSearchParams(window.location.search);
-  }
-  catch {
-    console.log("window is not defined")
-  }
-// https://example.com/path/to/page?color=purple&size=M&size=L
+  console.log(req.query.category);
+  const urlParams = new URLSearchParams(req.query.category);
 
   if(urlParams.has('category')){
     blogservice.getPostsByCategory(urlParams.get('category'))

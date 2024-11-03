@@ -96,12 +96,7 @@ function getCategories(){
 }
 function addPost(postData){
     return new Promise((resolve, reject) => {
-        if (typeof(postData.published) == "undefined") {
-            postData.published = false;
-        }
-        else {
-            postData.published = true;
-        }
+        postData.published = postData.published ? true : false;
         postData.id = posts.length + 1;
         posts.push(postData);
         resolve(postData);
