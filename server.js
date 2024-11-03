@@ -34,9 +34,10 @@ app.get('/', (req, res) => {
 
 app.get('/posts', (req, res) => {
   console.log(req.query.category);
-  const urlParams = new URLSearchParams(req.query.category);
+  const urlParams = new URLSearchParams(req.query);
 
   if(urlParams.has('category')){
+    console.log.
     blogservice.getPostsByCategory(urlParams.get('category'))
     .then(data=> res.json(data))
     .catch(err => res.status(404).json({ message: err }));
