@@ -32,8 +32,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  const urlParams = new URLSearchParams(location.search);
-
+  try {
+    console.log(window.location.search)
+    const urlParams = new URLSearchParams(window.location.search);
+  }
+  catch {
+    console.log("window is not defined")
+  }
 // https://example.com/path/to/page?color=purple&size=M&size=L
 
   if(urlParams.has('category')){
