@@ -89,6 +89,8 @@ app.post('/posts/add', upload.single("featureImage"), function (req, res, next) 
 
   app.get('/posts/:value', (req, res) => {
     blogservice.getPostByID(req.params.value)
+    .then(data=> res.json(data))
+    .catch(err => res.status(404).json({ message: err }));
   });
 
   async function upload(req) {
